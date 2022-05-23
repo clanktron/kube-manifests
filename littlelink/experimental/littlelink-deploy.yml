@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: littlelink
+  labels:
+    app: littlelink
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: littlelink
+  template:
+    metadata:
+      labels:
+        app: littlelink
+    spec:
+      containers:
+      - name: littlelink
+        image: timothystewart6/littlelink-server
+        envFrom:
+        - configMapRef:
+            name: littlelink-env

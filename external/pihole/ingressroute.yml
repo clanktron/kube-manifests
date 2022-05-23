@@ -1,0 +1,30 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pihole
+  namespace: external
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+  - match: Host(`pihole.claytonc.dev`)
+    kind: Rule
+    middlewares:
+      - name: traefik-local-whitelist@kubernetescrd
+    services:
+    - name: pihole
+      port: 80
+      scheme: http
+  tls:
+    secretName: pihole-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole
+  namespace: external
+spec:
+  externalName: 192.168.1.159
+  type: ExternalName

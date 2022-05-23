@@ -1,0 +1,20 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: k8s-api
+  namespace: default
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+
+  routes:
+  - match: Host(`k8s.claytonc.dev`)
+    kind: Rule
+    services:
+    - name: kubernetes
+      port: 443
+  tls:
+    secretName: k8s-tls

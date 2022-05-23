@@ -1,0 +1,32 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: truenas
+  namespace: external
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+  - match: Host(`nas.claytonc.dev`)
+    kind: Rule
+    middlewares:
+      - name: traefik-local-whitelist@kubernetescrd
+    services:
+    - name: truenas
+      port: 443
+      scheme: https
+      serversTransport: insecure-skip-verify
+  tls:
+    secretName: truenas-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: truenas
+  namespace: external
+spec:
+  externalName: 192.168.1.108
+  type: ExternalName
+---

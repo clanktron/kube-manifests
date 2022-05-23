@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nas-claytonc-dev
+  namespace: external
+spec:
+  secretName: truenas-tls
+  privateKey:
+    rotationPolicy: Always 
+  dnsNames:
+    - nas.claytonc.dev
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+    group: cert-manager.io

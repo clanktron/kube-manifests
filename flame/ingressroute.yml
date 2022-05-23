@@ -1,0 +1,20 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: flame
+  namespace: flame
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+
+  routes:
+  - match: Host(`dash.claytonc.dev`)
+    kind: Rule
+    services:
+    - name: flame
+      port: 80
+  tls:
+    secretName: flame-tls
