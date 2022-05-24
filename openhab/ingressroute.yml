@@ -1,0 +1,18 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: openhab
+  namespace: openhab
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`home.claytonc.dev`)
+      kind: Rule
+      services:
+        - name: openhab
+          port: 8080
+  tls:
+    secretName: openhab-tls
