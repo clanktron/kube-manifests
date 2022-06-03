@@ -1,0 +1,10 @@
+metrics:
+  enabled: true
+
+extraEnvVarsCrossplane: {}
+
+extraEnvVarsRBACManager: {}
+
+podSecurityContextCrossplane: {}
+
+podSecurityContextRBACManager: {}
