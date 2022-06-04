@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: portfolio
+spec:
+  destination:
+    name: ''
+    namespace: portfolio
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: portfolio
+    repoURL: 'https://github.com/clanktron/kube-manifests'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - PruneLast=true
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+
