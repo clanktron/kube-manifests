@@ -21,7 +21,7 @@ spec:
         - containerPort: 5005
         env:
         - name: PASSWORD
-          value: secret-password
+          value: k83fdnsjtkew+o0
 #          valueFrom:
 #            secretKeyRef:
 #              name: flame-secret
