@@ -22,7 +22,7 @@ data:
   SNAPCHAT: https://www.snapchat.com/add/clanktronc
   EMAIL: hello@claytonc.dev
   EMAIL_TEXT: Email
-  BUYMEACOFFEE: https://www.buymeacoffee.com/claytonc
+  #BUYMEACOFFEE: https://www.buymeacoffee.com/claytonc
   CUSTOM_BUTTON_TEXT: Portfolio
   CUSTOM_BUTTON_URL: https://portfolio.claytonc.dev
   CUSTOM_BUTTON_ALT_TEXT: Portfolio

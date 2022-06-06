@@ -14,7 +14,7 @@ spec:
 #      middlewares: 
 #        - name: auth
       services:
-      - name: littlelink-littlelink-server
+      - name: littlelink
         port: 3000
   #    middlewares:
   #      - name: auth
