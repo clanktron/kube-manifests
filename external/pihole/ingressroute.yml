@@ -9,7 +9,7 @@ spec:
     - web
     - websecure
   routes:
-  - match: Host(`pihole.claytonc.dev`)
+  - match: Host(`dns.claytonc.dev`)
     kind: Rule
     middlewares:
       - name: traefik-local-whitelist@kubernetescrd
