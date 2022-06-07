@@ -17,24 +17,27 @@ spec:
       containers:
       - name: flame
         image: pawelmalak/flame:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 5005
         env:
-        - name: PASSWORD
-          value: k83fdnsjtkew
-#          valueFrom:
-#            secretKeyRef:
-#              name: flame-secret
-#              key: PASSWORD
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: flame-secret
+                key: PASSWORD
+                optional: false
         volumeMounts:
           - mountPath: "/app/data"
             name: flame-data
-#          - mountPath: "/run/secrets/password"
-#            name: flame-password
       volumes:
         - name: flame-data
           persistentVolumeClaim:
             claimName: flame-data
-#        - name: flame-password
-#          secret:
-#            secretName: flame-secret
+
