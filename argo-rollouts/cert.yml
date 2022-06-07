@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argo-rollouts-tls
+  namespace: argocd
+spec:
+  secretName: argocd-rollouts-tls
+  privateKey:
+    rotationPolicy: Always 
+  dnsNames:
+    - rollouts.claytonc.dev
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+    group: cert-manager.io
