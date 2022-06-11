@@ -1,6 +1,6 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: argocd
+  name: shipa-system
   annotations:
     linkerd.io/inject: enabled
