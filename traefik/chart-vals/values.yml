@@ -1,0 +1,10 @@
+providers:
+  kubernetesCRD: 
+    allowCrossNamespace: true
+    allowExternalNameServices: true
+ingressRoute:
+  dashboard:
+    enabled: false
+additionalArguments:
+  - "--entryPoints.web.forwardedHeaders.trustedIPs=192.168.1.0/24"
+  - "--entryPoints.websecure.forwardedHeaders.trustedIPs=192.168.1.0/24"
