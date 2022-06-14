@@ -16,8 +16,6 @@ spec:
       parameters:
         - name: persistence.config.enabled
           value: 'true'
-        - name: postgresql.enabled
-          value: 'true'
   project: default
   syncPolicy:
     automated:

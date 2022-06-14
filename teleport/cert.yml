@@ -1,14 +1,14 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: traefik-tls
-  namespace: traefik
+  name: teleport-tls
+  namespace: teleport
 spec:
-  secretName: traefik-tls
+  secretName: teleport-tls
   privateKey:
     rotationPolicy: Always 
   dnsNames:
-    - traefik.claytonc.dev
+    - "sso.claytonc.dev"
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer

@@ -1,14 +1,14 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: traefik-tls
-  namespace: traefik
+  name: prometheus-tls
+  namespace: monitoring
 spec:
-  secretName: traefik-tls
+  secretName: prometheus-tls
   privateKey:
     rotationPolicy: Always 
   dnsNames:
-    - traefik.claytonc.dev
+    - prometheus.claytonc.dev
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer

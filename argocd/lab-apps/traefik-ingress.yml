@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik-ingress
+spec:
+  destination:
+    name: ''
+    namespace: traefik
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: traefik
+    repoURL: 'https://github.com/clanktron/kube-manifests'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - PruneLast=true
+      - ApplyOutOfSyncOnly=true
