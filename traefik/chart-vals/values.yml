@@ -15,7 +15,12 @@ ports:
     port: 3026
     expose: true
     exposedPort: 3026
-    protocol: TCP            
+    protocol: TCP  
+  proxy-teleport:
+    port: 3026
+    expose: true
+    exposedPort: 3026
+    protocol: TCP             
 additionalArguments:
   - "--entryPoints.web.forwardedHeaders.trustedIPs=192.168.1.0/24"
   - "--entryPoints.websecure.forwardedHeaders.trustedIPs=192.168.1.0/24"
