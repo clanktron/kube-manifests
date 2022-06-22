@@ -1,0 +1,49 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: pve-tls
+  namespace: external
+spec:
+  secretName: pve-tls
+  privateKey:
+    rotationPolicy: Always 
+  dnsNames:
+    - pve.claytonc.dev
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+    group: cert-manager.io
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pve
+  namespace: external
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+  - match: Host(`pve.claytonc.dev`)
+    kind: Rule
+    middlewares:
+      - name: traefik-local-whitelist@kubernetescrd
+    services:
+    - name: pve
+      port: 8006
+      scheme: https
+      serversTransport: insecure-skip-verify
+  tls:
+    secretName: pve-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pve
+  namespace: external
+spec:
+  externalName: 192.168.1.29
+  type: ExternalName
+---
