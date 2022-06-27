@@ -46,4 +46,6 @@ metadata:
 spec:
   externalName: 192.168.1.108
   type: ExternalName
----
+  ports:
+  - protocol: TCP
+    port: 443

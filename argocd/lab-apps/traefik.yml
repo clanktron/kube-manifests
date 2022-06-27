@@ -22,6 +22,8 @@ spec:
         ingressRoute:
           dashboard:
             enabled: false
+        log:
+          level: info
         ports:
           ssh-teleport:
             port: 3023
