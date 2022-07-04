@@ -9,7 +9,7 @@ spec:
     namespace: cert-manager
     server: 'https://kubernetes.default.svc'
   source:
-    path: manifest/cert-manager
+    path: manifests/cert-manager
     repoURL: 'https://github.com/clanktron/kube-manifests'
     targetRevision: HEAD
   project: default

@@ -36,8 +36,6 @@ spec:
   routes:
     - match: Host(`argocd.claytonc.dev`)
       kind: Rule
-      middlewares:
-        - name: traefik-local-whitelist@kubernetescrd
       services:
       - name: argocd-server
         port: 443

@@ -10,8 +10,8 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: ''
-    repoURL: 'https://grafana.github.io/helm-charts'
-    targetRevision: 16.32.0
+    repoURL: 'https://grafana.github.io/helm-charts/'
+    targetRevision: 6.32.0
     chart: grafana
     helm:
       values: |-
