@@ -1,0 +1,44 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jellyfin
+  # annotations:
+  #   linkerd.io/inject: enabled
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: jellyfin-tls
+  namespace: jellyfin
+spec:
+  secretName: jellyfin-tls
+  dnsNames:
+    - jellyfin.claytonc.dev
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+    group: cert-manager.io
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jellyfin
+  namespace: jellyfin
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+
+  routes:
+  - match: Host(`jellyfin.claytonc.dev`)
+    kind: Rule
+    services:
+    - name: jellyfin
+      port: 8096
+  tls:
+    secretName: jellyfin-tls
+
